@@ -4,6 +4,7 @@ import Base.BaseTest;
 import Base.DriverManager;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.RegistrationFluentPage;
 import pages.RegistrationPage;
 
 public class RegistrationTests extends BaseTest {
@@ -36,5 +37,12 @@ public class RegistrationTests extends BaseTest {
         Assert.assertEquals(registrationPage.getPhoneError(),"Only numbers are allowed.");
         registrationPage.enterPhone("7489549876");
         Assert.assertFalse(registrationPage.isPhoneErrorPresent(),"Phone error should be resolved");
+    }
+
+    @Test
+    public void testDobErrorFluent(){
+        RegistrationFluentPage registrationPage = new RegistrationFluentPage(DriverManager.getDriver());
+        registrationPage.navigateByUrl().enterFirstName("Itachi").enterLastName("Uchiha").submitForm();
+        Assert.assertTrue(registrationPage.isDobErrorDisplayed(),"Dob error is not displayed");
     }
 }
