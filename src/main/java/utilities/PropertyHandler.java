@@ -9,10 +9,12 @@ public class PropertyHandler {
 
     protected static Properties prop = new Properties();
     public static final String SELGRID_URL_KEY="selenium.gridurl";
+    public static String platform;
 
     static {
         try {
             PropertyHandler.loadPropertyFile();
+            platform = prop.getProperty("platform");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

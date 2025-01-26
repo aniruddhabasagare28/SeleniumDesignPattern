@@ -3,6 +3,7 @@ package pages;
 import Base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.web.WebCartPage;
 
 public class ProductDetailPage extends BasePage {
 
@@ -25,9 +26,9 @@ public class ProductDetailPage extends BasePage {
         waitAndClick(addToCartBtnId);
     }
 
-    public CartPage goToCart(){
+    public WebCartPage goToCart(){
         waitAndClick(cartBtnCss);
-        return new CartPage(driver);
+        return new WebCartPage(driver);
     }
 
     public String getProductName(){

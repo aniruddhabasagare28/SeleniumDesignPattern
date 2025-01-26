@@ -12,7 +12,7 @@ git clone https://github.com/Raneesh02/design_patterns_jan_25.git
 ## Java Installation
 
 ```
-https://www.oracle.com/in/java/technologies/downloads/#jdk22-windows
+https://www.oracle.com/java/technologies/javase/jdk22-archive-downloads.html
 ```
 
 

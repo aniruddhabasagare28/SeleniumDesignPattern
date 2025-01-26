@@ -8,6 +8,7 @@ import utilities.PropertyHandler;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 
 public class DriverManager {
 
@@ -30,10 +31,18 @@ public class DriverManager {
     }
 
     public static ChromeOptions getChromeOptions(){
+        System.out.println(PropertyHandler.platform+ " execution mode");
         ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("--no-sandbox");
-//        chromeOptions.addArguments("--disable-dev-shm-usage");
-//        chromeOptions.addArguments("--headless");
+        switch (PropertyHandler.platform){
+            case "web":
+                break;
+            case "mweb":
+                HashMap<String, String> mobileEmulation = new HashMap<>();
+                mobileEmulation.put("deviceName", "Nexus 5");
+                chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
+                break;
+            default: throw new IllegalArgumentException("Platform "+ PropertyHandler.platform+" is invalid");
+        }
         return chromeOptions;
     }
 
